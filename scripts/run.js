@@ -9,7 +9,12 @@ const contractCallback = async (contract, inputs) => {
     waveCount = await contract.getTotalWaves();
     console.log(`Total waves: ${waveCount.toNumber()}`);
     
-    let waveTxn = await contract.wave("A message!");
+    let waveTxn = await contract.wave("A message #1!");
+    await waveTxn.wait();
+    waveCount = await contract.getTotalWaves();
+    console.log(`Total waves: ${waveCount.toNumber()}`);
+
+    waveTxn = await contract.wave("A message #2!");
     await waveTxn.wait();
     waveCount = await contract.getTotalWaves();
     console.log(`Total waves: ${waveCount.toNumber()}`);
